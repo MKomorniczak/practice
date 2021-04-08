@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css} "/>
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<form th:action="@{/save}" th:object="${dto}" method="post">
+
+    <table>
+        <tr>
+            <td>Email:</td>
+            <td><input type="text" th:field="*{email}"/></td>
+            <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></td>
+        </tr>
+        <tr>
+            <td>Street</td>
+            <td><input type="text" th:field="*{details.street}" placeholder="Should represent a street address" rows="3" class="form-control"></td>
+            <td th:if="${#fields.hasErrors('details.street')}" th:errors="*{details.street}"></td>
+            </tr>
+        <tr>
+            <td>Zip Code</td>
+            <td><input th:field="*{details.zipCode}" placeholder="A Swedishtype of zipCode: ex. 35263"></td>
+            <td th:if="${#fields.hasErrors('details.zipCode')}" th:errors="*{details.zipCode}"></td>
+        </tr>
+        <tr>
+            <td>City</td>
+            <td><input th:field="*{details.city}" placeholder="Represents a cityname" rows="3" class="form-control"></td>
+            <td th:if="${#fields.hasErrors('details.city')}" th:errors="*{details.city}"></td>
+        </tr>
+        <tr>
+            <td>Cell phone</td>
+            <td><input th:field="*{details.cellphone}" placeholder="Swedish cellphone number" rows="3" class="form-control"></td>
+            <td th:if="${#fields.hasErrors('details.cellphone')}" th:errors="*{details.cellphone}"></td>
+        </tr>
+    </table>
+    <div><button type="submit" class="btn-primary">Save</button> </div>
+</form>
+
+
+
+</body>
+</html>
